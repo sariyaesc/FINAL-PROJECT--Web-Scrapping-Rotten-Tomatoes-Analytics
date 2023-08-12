@@ -83,5 +83,3 @@ plt.legend()
 
 plt.annotate(f'Average Difference: {round(media_total,2)}', xy =(15, 35))
 plt.show()
-
-
