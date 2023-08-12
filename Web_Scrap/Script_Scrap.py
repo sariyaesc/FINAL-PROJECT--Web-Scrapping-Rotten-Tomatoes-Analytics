@@ -31,7 +31,8 @@ def procesar_pagina(soup):
         valor_critic=item['criticsscore']
         tomatoers.append(valor_critic)
 
-    tomatoers= [None if item == "" else item for item in tomatoers]
+    tomatoers= ["Sin calificación" if item == "" else item for item in tomatoers]
+    
     
     #audience
     audience_score=soup.find_all('score-pairs')
@@ -40,7 +41,7 @@ def procesar_pagina(soup):
         valor_audience=item['audiencescore']
         audience_scores.append(valor_audience)
     
-    audience_scores= [None if item == "" else item for item in audience_scores]
+    audience_scores= ["Sin calificación" if item == "" else item for item in audience_scores]
 
     #estrenos
     estrenos_items=soup.find_all('span',{'data-qa':'discovery-media-list-item-start-date'})
@@ -71,7 +72,7 @@ procesar_pagina(soup)
 import pandas as pd
 
 df = pd.DataFrame(data)
-
+ 
 import datetime
 import os
 fecha_actual = datetime.datetime.now().strftime("%d-%m-%Y")
